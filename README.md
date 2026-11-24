@@ -37,30 +37,30 @@ Each project starts from a definition or a theorem, not a magic threshold.
 
 **yolowpdf** — glyph positions come straight from the text rendering matrix in ISO 32000-2 §9.4.4:
 
-$$
+```math
 T_{rm} = \begin{bmatrix} T_{fs} T_h & 0 & 0 \\ 0 & T_{fs} & 0 \\ 0 & T_{rise} & 1 \end{bmatrix} \times T_m \times \mathit{CTM}
-$$
+```
 
 **yolowhtml** — the block content model decides with an expected-F1-optimal threshold, then smooths the
 labels with a DOM-LCA Viterbi pass (Vogels et al., 2018). The theorem behind the threshold: for calibrated
 scores, the cut that maximises F1 is half the best achievable F1 (Lipton, Elkan & Naryanaswamy, 2014):
 
-$$
+```math
 \theta^\star = \tfrac{1}{2}\,F_1^\star
-$$
+```
 
 **yolowzstd** — the Huffman literal coder works against Shannon's source-coding bound (Huffman, 1952):
 
-$$
+```math
 H(X) \le \bar{\ell} < H(X) + 1, \qquad H(X) = -\sum_x p(x) \log_2 p(x)
-$$
+```
 
 **pagesift-stat** — when a source's grounding-hit or verification-success rate shifts, the run-length
 posterior of Bayesian online change-point detection notices (Adams & MacKay, 2007):
 
-$$
+```math
 P(r_t, x_{1:t}) = \sum_{r_{t-1}} P(r_t \mid r_{t-1})\, P\!\left(x_t \mid r_{t-1}, x_t^{(r)}\right) P(r_{t-1}, x_{1:t-1})
-$$
+```
 
 ## Try it — parse a page from this profile
 
