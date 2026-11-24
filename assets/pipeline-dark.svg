@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="430" viewBox="0 0 1000 430" role="img" aria-label="Yuanchao Wu: a pure-Rust stack from bytes to evidence. Inputs flow through yolowhtml, yolowpdf, yolowdoc and yolowsyntax into pagesift, which emits Markdown, JSON, DataGraph and MCP output.">
+<style>
+  .bg{fill:#0d1117;stroke:#30363d}
+  .panel{fill:#161b22;stroke:#30363d;stroke-width:1}
+  .h1{font:700 28px -apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif;fill:#e6edf3}
+  .h2{font:700 22px -apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif;fill:#e6edf3}
+  .sub{font:400 14px -apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif;fill:#8b949e}
+  .cap{font:600 10.5px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace;fill:#8b949e;letter-spacing:.08em}
+  .mono{font:500 12px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace;fill:#e6edf3}
+  .name{font:700 14px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace;fill:#f0883e}
+  .desc{font:400 11px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace;fill:#8b949e}
+  .big{font:700 20px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace;fill:#f0883e}
+  .out{font:600 12px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace;fill:#3fb950}
+  .note{font:400 12.5px -apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif;fill:#8b949e}
+  .tag{font:700 13px ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace;fill:#f0883e}
+  .small{font:400 10.5px -apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif;fill:#8b949e}
+  @media (prefers-reduced-motion: reduce){*{animation:none!important}}
+  .flow{fill:none;stroke:#8b949e;stroke-opacity:.55;stroke-width:1.5;stroke-dasharray:3 7;animation:dash 1.2s linear infinite}
+  @keyframes dash{to{stroke-dashoffset:-20}}
+  .cursor{fill:#f0883e;animation:blink 1.1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .pulse{fill:#f0883e;transform-box:fill-box;transform-origin:center;animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:.35;transform:scale(.8)}50%{opacity:1;transform:scale(1.25)}}
+  .hub{fill:rgba(240,136,62,0.16);stroke:#f0883e;stroke-width:1.5}
+  .dot{fill:#f0883e}
+</style>
+<rect class="bg" x=".5" y=".5" width="999" height="429" rx="14"/>
+<text x="28" y="52" class="h1" text-anchor="start">吴袁超 · YUANCHAO WU</text>
+<text x="28" y="80" class="sub" text-anchor="start">bytes → evidence — a pure-Rust stack, built from the byte level up</text>
+<text x="940" y="52" class="desc" text-anchor="end">~/YOLOW92 $ cargo tree --depth 1</text>
+<rect class="cursor" x="946" y="42" width="8" height="13"/>
+<text x="28" y="120" class="cap" text-anchor="start">BYTES IN</text>
+<text x="240" y="120" class="cap" text-anchor="start">PARSERS · yolow*</text>
+<text x="600" y="120" class="cap" text-anchor="start">ENGINE</text>
+<text x="824" y="120" class="cap" text-anchor="start">EVIDENCE OUT</text>
+<rect class="panel" x="24" y="133" width="172" height="34" rx="8"/>
+<text x="36" y="154" class="mono" text-anchor="start">&lt;!DOCTYPE html&gt;</text>
+<rect class="panel" x="24" y="188" width="172" height="34" rx="8"/>
+<text x="36" y="209" class="mono" text-anchor="start">%PDF-1.7</text>
+<rect class="panel" x="24" y="243" width="172" height="34" rx="8"/>
+<text x="36" y="264" class="mono" text-anchor="start">PK\x03\x04 (docx)</text>
+<rect class="panel" x="24" y="298" width="172" height="34" rx="8"/>
+<text x="36" y="319" class="mono" text-anchor="start">fn main() {</text>
+<rect class="panel" x="236" y="127" width="304" height="46" rx="9"/>
+<text x="250" y="146" class="name" text-anchor="start">yolowhtml</text>
+<text x="250" y="164" class="desc" text-anchor="start">HTML5 tokenizer · DOM arena · 125 trees</text>
+<rect class="panel" x="236" y="182" width="304" height="46" rx="9"/>
+<text x="250" y="201" class="name" text-anchor="start">yolowpdf</text>
+<text x="250" y="219" class="desc" text-anchor="start">xref · content streams · layout · OCR</text>
+<rect class="panel" x="236" y="237" width="304" height="46" rx="9"/>
+<text x="250" y="256" class="name" text-anchor="start">yolowdoc</text>
+<text x="250" y="274" class="desc" text-anchor="start">Office · ODF · EPUB · email · archives</text>
+<rect class="panel" x="236" y="292" width="304" height="46" rx="9"/>
+<text x="250" y="311" class="name" text-anchor="start">yolowsyntax</text>
+<text x="250" y="329" class="desc" text-anchor="start">tree-sitter runtime · 41 languages</text>
+<circle class="pulse" cx="524" cy="144" r="4"/>
+<rect class="hub" x="600" y="128" width="180" height="210" rx="12"/>
+<text x="690" y="162" class="big" text-anchor="middle">pagesift</text>
+<text x="690" y="180" class="desc" text-anchor="middle">one binary</text>
+<text x="690" y="208" class="mono" text-anchor="middle">capture</text>
+<text x="690" y="232" class="mono" text-anchor="middle">parse</text>
+<text x="690" y="256" class="mono" text-anchor="middle">DataGraph</text>
+<text x="690" y="280" class="mono" text-anchor="middle">ContextPack</text>
+<text x="690" y="304" class="mono" text-anchor="middle">Resolve</text>
+<rect class="panel" x="824" y="146" width="152" height="30" rx="8"/>
+<text x="900" y="165" class="out" text-anchor="middle">Markdown</text>
+<rect class="panel" x="824" y="194" width="152" height="30" rx="8"/>
+<text x="900" y="213" class="out" text-anchor="middle">JSON</text>
+<rect class="panel" x="824" y="242" width="152" height="30" rx="8"/>
+<text x="900" y="261" class="out" text-anchor="middle">DataGraph</text>
+<rect class="panel" x="824" y="290" width="152" height="30" rx="8"/>
+<text x="900" y="309" class="out" text-anchor="middle">MCP · HTTP API</text>
+<rect class="panel" x="236" y="364" width="268" height="36" rx="9"/>
+<rect class="panel" x="512" y="364" width="268" height="36" rx="9"/>
+<text x="250" y="387" class="name" text-anchor="start">yolowzstd</text><text x="338" y="387" class="desc" text-anchor="start">zstd · RFC 8878</text>
+<text x="526" y="387" class="name" text-anchor="start">yolow64</text><text x="596" y="387" class="desc" text-anchor="start">SIMD Base64</text>
+<text x="28" y="387" class="cap" text-anchor="start">CODECS UNDERNEATH</text>
+<path class="flow" d="M196 150 L236 150"/>
+<circle class="dot" r="2.6"><animateMotion dur="1.6s" begin="0.00s" repeatCount="indefinite" path="M196 150 L236 150"/></circle>
+<path class="flow" d="M196 205 L236 205"/>
+<circle class="dot" r="2.6"><animateMotion dur="1.6s" begin="0.37s" repeatCount="indefinite" path="M196 205 L236 205"/></circle>
+<path class="flow" d="M196 260 L236 260"/>
+<circle class="dot" r="2.6"><animateMotion dur="1.6s" begin="0.74s" repeatCount="indefinite" path="M196 260 L236 260"/></circle>
+<path class="flow" d="M196 315 L236 315"/>
+<circle class="dot" r="2.6"><animateMotion dur="1.6s" begin="1.11s" repeatCount="indefinite" path="M196 315 L236 315"/></circle>
+<path class="flow" d="M540 150 C570 150 570 233 600 233"/>
+<circle class="dot" r="2.6"><animateMotion dur="2.2s" begin="1.48s" repeatCount="indefinite" path="M540 150 C570 150 570 233 600 233"/></circle>
+<path class="flow" d="M540 205 C570 205 570 233 600 233"/>
+<circle class="dot" r="2.6"><animateMotion dur="2.2s" begin="1.85s" repeatCount="indefinite" path="M540 205 C570 205 570 233 600 233"/></circle>
+<path class="flow" d="M540 260 C570 260 570 233 600 233"/>
+<circle class="dot" r="2.6"><animateMotion dur="2.2s" begin="0.22s" repeatCount="indefinite" path="M540 260 C570 260 570 233 600 233"/></circle>
+<path class="flow" d="M540 315 C570 315 570 233 600 233"/>
+<circle class="dot" r="2.6"><animateMotion dur="2.2s" begin="0.59s" repeatCount="indefinite" path="M540 315 C570 315 570 233 600 233"/></circle>
+<path class="flow" d="M780 233 C802 233 802 161 824 161"/>
+<circle class="dot" r="2.6"><animateMotion dur="2.2s" begin="0.96s" repeatCount="indefinite" path="M780 233 C802 233 802 161 824 161"/></circle>
+<path class="flow" d="M780 233 C802 233 802 209 824 209"/>
+<circle class="dot" r="2.6"><animateMotion dur="2.2s" begin="1.33s" repeatCount="indefinite" path="M780 233 C802 233 802 209 824 209"/></circle>
+<path class="flow" d="M780 233 C802 233 802 257 824 257"/>
+<circle class="dot" r="2.6"><animateMotion dur="2.2s" begin="1.70s" repeatCount="indefinite" path="M780 233 C802 233 802 257 824 257"/></circle>
+<path class="flow" d="M780 233 C802 233 802 305 824 305"/>
+<circle class="dot" r="2.6"><animateMotion dur="2.2s" begin="0.07s" repeatCount="indefinite" path="M780 233 C802 233 802 305 824 305"/></circle>
+<path class="flow" d="M690 364 L690 338"/>
+<circle class="dot" r="2.6"><animateMotion dur="2.2s" begin="0.44s" repeatCount="indefinite" path="M690 364 L690 338"/></circle>
+<path class="flow" d="M370 364 L370 338"/>
+<circle class="dot" r="2.6"><animateMotion dur="2.2s" begin="0.81s" repeatCount="indefinite" path="M370 364 L370 338"/></circle>
+</svg>

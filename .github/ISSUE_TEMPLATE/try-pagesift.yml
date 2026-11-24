@@ -1,0 +1,17 @@
+name: Try pagesift
+description: Paste a public URL; a GitHub Action parses it with pagesift and replies with the Markdown.
+title: "[try] "
+labels: ["try-pagesift"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Keep the `[try]` at the start of the title. Public `http(s)` pages only, `robots.txt` is respected,
+        three tries per account per day. The issue is closed and locked after the reply.
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      placeholder: https://example.com/some/article
+    validations:
+      required: true
