@@ -375,18 +375,18 @@ const t=(x,y,v,cls="body",a="start")=>`<text x="${x}" y="${y}" class="${cls}" te
 const rect=(x,y,w,h,fill=c.panel,stroke=c.line,rx=8)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" fill="${fill}" stroke="${stroke}"/>`;
 const line=(x1,y1,x2,y2,color=c.line,extra="")=>`<path d="M${x1} ${y1}L${x2} ${y2}" stroke="${color}" fill="none" stroke-width="1.6" ${extra}/>`;
 const dot=(x,y,r=4,color=c.accent)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${color}"/>`;
-const path=(d,col=c.accent,extra="")=>`<path d="${d}" fill="none" stroke="${col}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" ${extra}/>`;
-const tile=(x,y,w,h,v,accent=false)=>rect(x,y,w,h,accent?c.soft:c.panel,accent?c.accent:c.line)+t(x+w/2,y+h/2+5,v,accent?"accent":"body","middle");
-const arrow=(x1,y1,x2,y2)=>line(x1,y1,x2,y2,c.blue,'marker-end="url(#arrow)"');
+const path=(d,col=c.accent,extra="")=>`<path d="${d}" fill="none" stroke="${col}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="trace" pathLength="1" ${extra}/>`;
+const tile=(x,y,w,h,v,accent=false)=>`<g class="step">${rect(x,y,w,h,accent?c.soft:c.panel,accent?c.accent:c.line)}${t(x+w/2,y+h/2+5,v,accent?"accent":"body","middle")}</g>`;
+const arrow=(x1,y1,x2,y2)=>line(x1,y1,x2,y2,c.blue,'class="signal" marker-end="url(#arrow)"');
 function graphic(kind,data,threshold){
 let p="";
 if(kind==="flow"||kind==="lanes"){
-  const w=kind==="flow"?176:172, gap=24;data.forEach((v,i)=>{const x=26+i*(w+gap);p+=tile(x,160,w,66,v,i===1||i===2);if(i<3)p+=arrow(x+w+3,193,x+w+gap-4,193);});
+  const w=168, gap=24;data.forEach((v,i)=>{const x=26+i*(w+gap);p+=tile(x,160,w,66,v,i===1||i===2);if(i<3)p+=arrow(x+w+3,193,x+w+gap-4,193);});
   if(kind==="lanes"){for(let j=0;j<16;j++)p+=rect(80+j*40,245,33,12,j%4===0?c.accent:c.soft,c.line,2);p+=t(400,285,"Register lanes shown schematically","small","middle");}
 }else if(kind==="bars"){
- const n=data.length, h=n>4?24:29;data.forEach(([label,v],i)=>{let y=135+i*(h+7);p+=t(35,y+17,label,"mono")+rect(220,y,460,h,c.panel,c.line,4)+rect(220,y,460*v,h,typeof threshold==="number"?(v>=threshold?c.green:c.muted):c.blue,"none",4)+t(704,y+18,Math.round(v*100)+"%","mono");});if(typeof threshold==="number")p+=line(220+460*threshold,128,220+460*threshold,295,c.accent,'stroke-dasharray="4 4"');
+ const n=data.length, h=n>4?24:29;data.forEach(([label,v],i)=>{let y=135+i*(h+7);p+=t(35,y+17,label,"mono")+rect(220,y,460,h,c.panel,c.line,4)+`<g class="meter">${rect(220,y,460*v,h,typeof threshold==="number"?(v>=threshold?c.green:c.muted):c.blue,"none",4)}</g>`+t(704,y+18,Math.round(v*100)+"%","mono");});if(typeof threshold==="number")p+=line(220+460*threshold,128,220+460*threshold,295,c.accent,'stroke-dasharray="4 4"');
 }else if(kind==="bits"){
- data.forEach((v,i)=>{const x=54+i*181;p+=rect(x,142,160,56,c.panel,i%2?c.blue:c.accent)+t(x+80,177,v,"large","middle")+t(x+80,219,[19,22,5,46][i],"mono","middle")+arrow(x+80,228,x+80,245)+tile(x+49,250,62,44,["T","W","F","u"][i],true);});
+ p+=t(400,132,"M · 0x4D     a · 0x61     n · 0x6E   →   24 bits","small","middle");data.forEach((v,i)=>{const x=54+i*181;p+=rect(x,142,160,56,c.panel,i%2?c.blue:c.accent)+t(x+80,177,v,"large","middle")+t(x+80,219,[19,22,5,46][i],"mono","middle")+arrow(x+80,228,x+80,245)+tile(x+49,250,62,44,["T","W","F","u"][i],true);});
 }else if(kind==="tiles"){
  const w=234;data.forEach((v,i)=>{const x=26+(i%3)*257,y=139+Math.floor(i/3)*74;p+=tile(x,y,w,56,v,i===0||i===data.length-1);});
 }else if(kind==="hardware"){
@@ -407,7 +407,7 @@ if(kind==="flow"||kind==="lanes"){
 }else if(kind==="tree"){
  data.forEach((b,i)=>{let x=60+i*145;p+=tile(x,145,110,48,"test "+(i+1)+": "+b,true);if(i<4)p+=arrow(x+112,169,x+141,169);});p+=arrow(400,202,400,226)+tile(260,235,280,50,"10110₂ = leaf 22",true);
 }else if(kind==="viterbi"){
- const xs=[140,270,400,530,660];p+=t(32,163,"keep","small")+t(32,248,"drop","small");xs.forEach((x,i)=>{if(i<4){line;for(let y of [160,245])for(let z of [160,245])p+=line(x,y,xs[i+1],z,c.line);}p+=dot(x,160,7,c.muted)+dot(x,245,7,c.muted);p+=t(x,285,["nav","title","short p","body","footer"][i],"small","middle");});p+=path("M140 245L270 160L400 160L530 160L660 245",c.green);[245,160,160,160,245].forEach((y,i)=>p+=dot(xs[i],y,6,c.green));p+=t(400,142,"low score, coherent neighbors","accent","middle");
+ const xs=[140,270,400,530,660];p+=t(32,163,"keep","small")+t(32,248,"drop","small");xs.forEach((x,i)=>{if(i<4){for(let y of [160,245])for(let z of [160,245])p+=line(x,y,xs[i+1],z,c.line);}p+=dot(x,160,7,c.muted)+dot(x,245,7,c.muted);p+=t(x,285,["nav","title","short p","body","footer"][i],"small","middle");});p+=path("M140 245L270 160L400 160L530 160L660 245",c.green);[245,160,160,160,245].forEach((y,i)=>p+=dot(xs[i],y,6,c.green));p+=t(400,142,"low score, coherent neighbors","accent","middle");
 }else if(kind==="geometry"){
  p+=rect(75,132,180,150,c.panel,c.line)+line(100,250,230,250)+line(100,250,100,148)+rect(120,171,64,65,c.soft,c.accent)+t(152,217,"A","large","middle")+arrow(272,205,470,205)+t(370,188,"Tₘ · CTM","mono","middle")+rect(480,129,220,158,c.panel,c.line);
  p+=`<g transform="translate(544 163) rotate(-14)">${rect(0,0,64,65,c.soft,c.blue)}${t(32,44,"A","large","middle")}</g>`+t(590,275,"page coordinates","small","middle");
@@ -423,7 +423,9 @@ return p;
 const n=s.scenes.length,duration=n*7;
 let css=`.bg{fill:${c.bg};stroke:${c.line}}text{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;fill:${c.text}}.name{font-size:26px;font-weight:700;letter-spacing:-.5px}.tag{font:600 12px ui-monospace,monospace;letter-spacing:1.8px;fill:${c.accent}}.sub{font-size:15px;fill:${c.muted}}.heading{font-size:24px;font-weight:650;letter-spacing:-.4px}.body{font-size:15px}.small{font-size:13px;fill:${c.muted}}.mono{font:14px ui-monospace,monospace}.accent{font:600 14px ui-monospace,monospace;fill:${c.accent}}.large{font:600 23px ui-monospace,monospace}.scene{opacity:0}.scene0{opacity:1}`;
 for(let i=0;i<n;i++){let a=i*100/n,b=(i+1)*100/n, f=1.1;const k=i===0?`0%,${b-f}%{opacity:1;transform:translateY(0)}${b}%{opacity:0;transform:translateY(-5px)}${100-f}%{opacity:0;transform:translateY(5px)}100%{opacity:1;transform:translateY(0)}`:`0%,${a}%{opacity:0;transform:translateY(5px)}${a+f}%,${b-f}%{opacity:1;transform:translateY(0)}${b}%,100%{opacity:0;transform:translateY(-5px)}`;css+=`@keyframes scene${i}{${k}}.scene${i}{animation:scene${i} ${duration}s linear infinite}`;}
-css+=`@media(prefers-reduced-motion:reduce){.scene{animation:none!important;opacity:0}.scene0{opacity:1}}`;
+css+=`@keyframes stageStep{0%,1%{opacity:0;transform:translateY(6px)}5%,100%{opacity:1;transform:translateY(0)}}@keyframes stageMeter{0%,1%{transform:scaleX(0)}8%,100%{transform:scaleX(1)}}@keyframes stageTrace{0%,1%{stroke-dashoffset:1}10%,100%{stroke-dashoffset:0}}@keyframes signalMove{to{stroke-dashoffset:-18}}.meter{transform-box:fill-box;transform-origin:left center}.trace{stroke-dasharray:1}.signal{stroke-dasharray:5 4;animation:signalMove 2.4s linear infinite}`;
+for(let i=0;i<n;i++){const delay=i*7;css+=`.scene${i} .step{animation:stageStep ${duration}s ${delay}s infinite both}.scene${i} .step:nth-of-type(2n){animation-delay:${delay+.45}s}.scene${i} .step:nth-of-type(3n){animation-delay:${delay+.85}s}.scene${i} .meter{animation:stageMeter ${duration}s ${delay}s infinite both}.scene${i} .trace{animation:stageTrace ${duration}s ${delay}s infinite both}`;}
+css+=`@media(prefers-reduced-motion:reduce){.scene,.scene *{animation:none!important}.scene{opacity:0}.scene0{opacity:1}.trace{stroke-dashoffset:0}.signal{stroke-dasharray:none}}`;
 let out=`<svg xmlns="http://www.w3.org/2000/svg" width="800" height="365" viewBox="0 0 800 365" role="img" aria-label="${e(s.name+": "+s.scenes.map(x=>x[0]).join("; "))}"><title>${e(s.name+" — "+s.tag)}</title><desc>${e(s.intro+" "+s.scenes.map(x=>x[1]+" "+x[4]).join(" "))}</desc><defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6Z" fill="${c.blue}"/></marker></defs><style>${css}</style><rect class="bg" x=".5" y=".5" width="799" height="364" rx="14"/>${t(27,38,s.name,"name")}${t(773,35,s.tag,"tag","end")}${line(26,54,774,54)}`;
 s.scenes.forEach(([title,subtitle,kind,data,note,threshold],i)=>{out+=`<g class="scene scene${i}">${t(27,86,title,"heading")}${t(27,108,subtitle,"sub")}${graphic(kind,data,threshold)}${line(26,310,774,310)}${t(27,333,note,"small")}${t(773,351,String(i+1).padStart(2,"0")+" / "+String(n).padStart(2,"0"),"mono","end")}`;for(let j=0;j<n;j++)out+=rect(27+j*42,343,34,4,j===i?c.accent:c.line,"none",2);out+="</g>";});
 return out+"</svg>\n";

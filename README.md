@@ -6,7 +6,7 @@
 
 ## PageSift — the engine
 
-[Source](https://github.com/YOLOW92/pagesift) · [crates.io](https://crates.io/crates/pagesift) · Local-first web capture, native parsing, provenance-tracked graphs, context compilation and claim resolution.
+[Source](https://github.com/YOLOW92/pagesift) · [crates.io](https://crates.io/crates/pagesift) · Local-first web capture, native parsing, provenance-tracked graphs, context compilation and claim resolution. CLI, HTTP, MCP, Python and Node.js; HTML, PDF, Office and 373 code languages.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/pagesift-dark.svg">
@@ -28,7 +28,7 @@
 
 ### yolowzstd
 
-[Source](https://github.com/YOLOW92/yolowzstd) · [crates.io](https://crates.io/crates/yolowzstd) · Huffman pair lookup, SWAR, information-theoretic FSE and bounded optimal parsing. Safe Rust, zero runtime dependencies.
+[Source](https://github.com/YOLOW92/yolowzstd) · [crates.io](https://crates.io/crates/yolowzstd) · Huffman pair lookup, SWAR, information-theoretic FSE and bounded optimal parsing. Safe Rust, zero runtime dependencies. **1.74×** C libzstd decode throughput for 64-byte frames (repository benchmark).
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/yolowzstd-dark.svg">
@@ -37,7 +37,7 @@
 
 ### yolowhtml
 
-[Source](https://github.com/YOLOW92/yolowhtml) · [crates.io](https://crates.io/crates/yolowhtml) · Spec-first HTML5, Markdown and statistical fallback extraction. **0.866 F1** on the WCXB 150-page test split.
+[Source](https://github.com/YOLOW92/yolowhtml) · [crates.io](https://crates.io/crates/yolowhtml) · Spec-first HTML5, Markdown and statistical fallback extraction. **0.866 F1** on the WCXB 150-page test split; **0.24 ms/page** HTML-to-Markdown in its recorded benchmark.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/yolowhtml-dark.svg">
@@ -46,7 +46,7 @@
 
 ### yolowpdf
 
-[Source](https://github.com/YOLOW92/yolowpdf) · [crates.io](https://crates.io/crates/yolowpdf) · Native document geometry, two-dimensional math and optional OCR with open BF16 models. v0.2.1 routes Accurate OCR to completed v3 text recognizers.
+[Source](https://github.com/YOLOW92/yolowpdf) · [crates.io](https://crates.io/crates/yolowpdf) · Native document geometry, two-dimensional math and optional OCR with open BF16 models. **2,256 pages/s** on 1,269 born-digital olmOCR-bench pages (recorded benchmark); v0.2.1 routes Accurate OCR to completed v3 text recognizers.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/yolowpdf-dark.svg">
