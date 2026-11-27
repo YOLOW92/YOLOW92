@@ -6,57 +6,74 @@
 
 ## PageSift — the engine
 
-[Source](https://github.com/YOLOW92/pagesift) · [crates.io](https://crates.io/crates/pagesift) · Local-first web capture, native parsing, provenance-tracked graphs, context compilation and claim resolution. CLI, HTTP, MCP, Python and Node.js; HTML, PDF, Office and 373 code languages.
+<a href="https://crates.io/crates/pagesift"><img src="https://img.shields.io/crates/d/pagesift?style=flat-square&label=downloads&color=bc4c00" alt="pagesift downloads"></a> <a href="https://crates.io/crates/pagesift"><img src="https://img.shields.io/crates/v/pagesift?style=flat-square&label=crates.io&color=0969da" alt="pagesift on crates.io"></a> <a href="https://github.com/YOLOW92/pagesift"><img src="https://img.shields.io/github/stars/YOLOW92/pagesift?style=flat-square&color=1a7f37" alt="pagesift stars"></a>
+
+[Source](https://github.com/YOLOW92/pagesift) · Local-first web capture, native parsing, provenance-tracked graphs, context compilation and claim resolution. CLI, HTTP, MCP, Python and Node.js; HTML, PDF, Office and 373 code languages.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/pagesift-dark.svg">
   <img src="assets/pagesift-light.svg" alt="PageSift: One stack, six primitives; Learn which route works; Detect drift, not noise; Find the concurrency sweet spot; Fit execution to the machine" width="800">
 </picture>
 
-<sub>Five chapters · 7 seconds per chapter · illustrative diagrams, not live benchmark traces.</sub>
+## The yolow stack — papers, statistics and my own takes
 
-## The stack — four algorithm studies
+Each card cycles through eight chapters: the paper or spec it starts from, the formula, an animated example, and **my take** — what I read differently or changed in the implementation.
 
-### yolow64
+<table>
+<tr>
+<td width="50%" valign="top">
 
-[Source](https://github.com/YOLOW92/yolow64) · [crates.io](https://crates.io/crates/yolow64) · Bit regrouping, AVX-512/AVX2/NEON, strict validation and cache-aware streaming. **101.4 GB/s** decode at 16 KiB on one Zen 5 core (repository benchmark).
+**[yolow64](https://github.com/YOLOW92/yolow64)** · Base64 with full validation · AVX-512 / AVX2 / NEON<br>
+<a href="https://crates.io/crates/yolow64"><img src="https://img.shields.io/crates/d/yolow64?style=flat-square&label=downloads&color=bc4c00" alt="yolow64 downloads"></a> <a href="https://crates.io/crates/yolow64"><img src="https://img.shields.io/crates/v/yolow64?style=flat-square&label=crates.io&color=0969da" alt="yolow64 on crates.io"></a>
 
-<picture>
+<a href="https://github.com/YOLOW92/yolow64"><picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/yolow64-dark.svg">
-  <img src="assets/yolow64-light.svg" alt="yolow64: Regroup the bits; Turn a vector into a lookup; Validate while decoding; Choose the hardware path; Respect the cache" width="800">
-</picture>
+  <img src="assets/yolow64-light.svg" alt="yolow64: one multishift, eight sextets; whitespace in two instructions; where a branch becomes a coin flip; validate with one and-not; one sign bit catches every bad byte; stream when 7N/3 outgrows the LLC; proving a shortcut cannot exist; speedups as intervals" width="100%">
+</picture></a>
 
-### yolowzstd
+</td>
+<td width="50%" valign="top">
 
-[Source](https://github.com/YOLOW92/yolowzstd) · [crates.io](https://crates.io/crates/yolowzstd) · Huffman pair lookup, SWAR, information-theoretic FSE and bounded optimal parsing. Safe Rust, zero runtime dependencies. **1.74×** C libzstd decode throughput for 64-byte frames (repository benchmark).
+**[yolowzstd](https://github.com/YOLOW92/yolowzstd)** · Safe-Rust Zstandard · zero runtime dependencies<br>
+<a href="https://crates.io/crates/yolowzstd"><img src="https://img.shields.io/crates/d/yolowzstd?style=flat-square&label=downloads&color=bc4c00" alt="yolowzstd downloads"></a> <a href="https://crates.io/crates/yolowzstd"><img src="https://img.shields.io/crates/v/yolowzstd?style=flat-square&label=crates.io&color=0969da" alt="yolowzstd on crates.io"></a>
 
-<picture>
+<a href="https://github.com/YOLOW92/yolowzstd"><picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/yolowzstd-dark.svg">
-  <img src="assets/yolowzstd-light.svg" alt="yolowzstd: Entropy sets the target; Two symbols, one lookup; Choose table precision; Filter eight tags at once; Optimize parsing, not just matching" width="800">
-</picture>
+  <img src="assets/yolowzstd-light.svg" alt="yolowzstd: two symbols per table lookup; limit code length, keep Kraft exact; quantize with the least KL loss; reuse the old tree when KL is small; an online price list in eighth-bit units; parse for bits; eight tag compares in one u64; skip faster as the evidence grows" width="100%">
+</picture></a>
 
-### yolowhtml
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
 
-[Source](https://github.com/YOLOW92/yolowhtml) · [crates.io](https://crates.io/crates/yolowhtml) · Spec-first HTML5, Markdown and statistical fallback extraction. **0.866 F1** on the WCXB 150-page test split; **0.24 ms/page** HTML-to-Markdown in its recorded benchmark.
+**[yolowhtml](https://github.com/YOLOW92/yolowhtml)** · HTML5 parsing · HTML→Markdown · main-content extraction<br>
+<a href="https://crates.io/crates/yolowhtml"><img src="https://img.shields.io/crates/d/yolowhtml?style=flat-square&label=downloads&color=bc4c00" alt="yolowhtml downloads"></a> <a href="https://crates.io/crates/yolowhtml"><img src="https://img.shields.io/crates/v/yolowhtml?style=flat-square&label=crates.io&color=0969da" alt="yolowhtml on crates.io"></a>
 
-<picture>
+<a href="https://github.com/YOLOW92/yolowhtml"><picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/yolowhtml-dark.svg">
-  <img src="assets/yolowhtml-light.svg" alt="yolowhtml: Represent a page as blocks; Five tests become one index; Choose the F1-optimal cut; Decode the coherent sequence; Keep the model cache-resident" width="800">
-</picture>
+  <img src="assets/yolowhtml-light.svg" alt="yolowhtml: a cascade; composite text density; maximum subsequence of prose; character-class entropy; oblivious trees; F1-optimal cut; DOM-LCA Viterbi; gains with p-values" width="100%">
+</picture></a>
 
-### yolowpdf
+</td>
+<td width="50%" valign="top">
 
-[Source](https://github.com/YOLOW92/yolowpdf) · [crates.io](https://crates.io/crates/yolowpdf) · Native document geometry, two-dimensional math and optional OCR with open BF16 models. **2,256 pages/s** on 1,269 born-digital olmOCR-bench pages (recorded benchmark); v0.2.1 routes Accurate OCR to completed v3 text recognizers.
+**[yolowpdf](https://github.com/YOLOW92/yolowpdf)** · Native PDF geometry · 2-D math · optional pure-Rust OCR<br>
+<a href="https://crates.io/crates/yolowpdf"><img src="https://img.shields.io/crates/d/yolowpdf?style=flat-square&label=downloads&color=bc4c00" alt="yolowpdf downloads"></a> <a href="https://crates.io/crates/yolowpdf"><img src="https://img.shields.io/crates/v/yolowpdf?style=flat-square&label=crates.io&color=0969da" alt="yolowpdf on crates.io"></a>
 
-<picture>
+<a href="https://github.com/YOLOW92/yolowpdf"><picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/yolowpdf-dark.svg">
-  <img src="assets/yolowpdf-light.svg" alt="yolowpdf: Map glyphs into page space; Recover reading order; Reconstruct two-dimensional math; Recognize sequences without alignment; Route models to available compute" width="800">
-</picture>
+  <img src="assets/yolowpdf-light.svg" alt="yolowpdf: recursive X-Y cut; text/math HMM; fractions from geometry; text rendering matrix; running headers; Wilson re-check; extreme-value timeout; queueing-theory GPU batching" width="100%">
+</picture></a>
+
+</td>
+</tr>
+</table>
 
 ### Other foundations
 
-- [yolowdoc](https://github.com/YOLOW92/yolowdoc) · Office, ODF, EPUB, email, SQLite and archives → Markdown.
-- [yolowsyntax](https://github.com/YOLOW92/yolowsyntax) · safe Rust tree-sitter runtime; 5,875 / 5,875 upstream corpus cases across 41 languages in its recorded benchmark.
+- **[yolowdoc](https://github.com/YOLOW92/yolowdoc)** · Office, ODF, EPUB, email, SQLite and archives → Markdown.<br><a href="https://crates.io/crates/yolowdoc"><img src="https://img.shields.io/crates/d/yolowdoc?style=flat-square&label=downloads&color=bc4c00" alt="yolowdoc downloads"></a> <a href="https://crates.io/crates/yolowdoc"><img src="https://img.shields.io/crates/v/yolowdoc?style=flat-square&label=crates.io&color=0969da" alt="yolowdoc on crates.io"></a>
+- **[yolowsyntax](https://github.com/YOLOW92/yolowsyntax)** · safe Rust tree-sitter runtime; 5,875 / 5,875 upstream corpus cases across 41 languages in its recorded benchmark.<br><a href="https://crates.io/crates/yolowsyntax"><img src="https://img.shields.io/crates/d/yolowsyntax?style=flat-square&label=downloads&color=bc4c00" alt="yolowsyntax downloads"></a> <a href="https://crates.io/crates/yolowsyntax"><img src="https://img.shields.io/crates/v/yolowsyntax?style=flat-square&label=crates.io&color=0969da" alt="yolowsyntax on crates.io"></a>
 
 ## The mathematics underneath
 
@@ -256,4 +273,4 @@ Public `http(s)` pages only (private and loopback addresses are refused by pages
 [**AiSeek**](https://aiseek.dev) — an evidence-graph product I design, build and run on my own
 ([showcase](https://github.com/YOLOW92/aiseek-showcase)).
 
-<sub>Benchmarks are self-reported measurements from the linked repositories, not independent results. Animation assets are generated locally with <code>node scripts/render_svgs.mjs</code>; no runtime JavaScript or external image dependencies. Reduced-motion users see the first chapter; the full technical descriptions remain in the expandable sections above.</sub>
+<sub>Benchmarks are self-reported measurements from the linked repositories, not independent results. Animation assets are generated locally with <code>node scripts/render_svgs.mjs</code> (content in <code>scripts/yolow_specs.mjs</code>); no runtime JavaScript. Diagrams use small illustrative examples. Reduced-motion users see the first chapter of each card.</sub>
