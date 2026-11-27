@@ -80,8 +80,8 @@
 <text x="288" y="442" class="ulabel" text-anchor="middle">DRAM</text>
 <g class="ann ann-simd">
 <text x="584" y="122" class="tag" text-anchor="start">① SIMD · yolow64</text>
-<text x="584" y="142" class="note" text-anchor="start">AVX2 / NEON kernels, picked at runtime;</text>
-<text x="584" y="160" class="note" text-anchor="start">20 GB/s Base64 decode with full validation</text>
+<text x="584" y="142" class="note" text-anchor="start">AVX-512 / AVX2 / NEON, five tiers at runtime;</text>
+<text x="584" y="160" class="note" text-anchor="start">101 GB/s Base64 decode with full validation</text>
 </g>
 <g class="ann ann-l1">
 <text x="584" y="188" class="tag" text-anchor="start">② L1d · yolowhtml</text>
@@ -101,7 +101,7 @@
 <g class="ann ann-core">
 <text x="584" y="386" class="tag" text-anchor="start">⑤ cores · pagesift-flow + yolowzstd</text>
 <text x="584" y="406" class="note" text-anchor="start">cgroup-sized NUMA worker pool;</text>
-<text x="584" y="424" class="note" text-anchor="start">parallel zstd frames, decoded in parallel</text>
+<text x="584" y="424" class="note" text-anchor="start">zstd frames decoded in parallel, zero-copy</text>
 </g>
 <text x="976" y="456" class="small" text-anchor="end">numbers: each repo's own benchmark pages</text>
 </svg>

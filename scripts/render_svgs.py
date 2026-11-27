@@ -146,11 +146,11 @@ def pipeline(c):
 # ---------------------------------------------------------------- cpu map
 
 ANNOTATIONS = [
-    ("simd", "① SIMD · yolow64", "AVX2 / NEON kernels, picked at runtime;", "20 GB/s Base64 decode with full validation"),
+    ("simd", "① SIMD · yolow64", "AVX-512 / AVX2 / NEON, five tiers at runtime;", "101 GB/s Base64 decode with full validation"),
     ("l1", "② L1d · yolowhtml", "block content model: 125 depth-5 oblivious trees,", "≈ 11 KiB of weights that stay L1-resident"),
     ("l2", "③ L2 · yolowzstd", "match tables budgeted from the detected cache;", "generation-stamped, no per-call memset"),
     ("llc", "④ LLC · yolow64", "non-temporal stores past 3/7 of the LLC:", "16 MiB encode 7.36 → 13.0 GB/s"),
-    ("core", "⑤ cores · pagesift-flow + yolowzstd", "cgroup-sized NUMA worker pool;", "parallel zstd frames, decoded in parallel"),
+    ("core", "⑤ cores · pagesift-flow + yolowzstd", "cgroup-sized NUMA worker pool;", "zstd frames decoded in parallel, zero-copy"),
 ]
 
 
